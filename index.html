@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promises and Fetch 2</title>
+</head>
+
+<body>
+    <script>
+        let url="https://api.breakingbadquotes.xyz/v1/quotes/78"
+        let getdata = () =>fetch(url).then(response => response.json())
+
+        let getauthor = () => getdata()
+        .then (product=>product.map((p)=>p.quote))
+
+        getauthor().then((names) => {
+            document.write("<h2>Different quotes</h2>");
+            document.write("<ul>");
+            for (let name of names) {
+                document.write("<li> " + name + "</li>");
+            }
+            document.write("</ul>");
+        });
+
+    </script>
+</body>
+
+</html>
